@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 2.5rem;
+    padding: 3rem;
 
  h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
  }
 `;
 
@@ -12,6 +12,7 @@ export const AreaIdentificacao = styled.div`
   border-radius: 5px;
   background: ${(props) => props.theme["gray-800"]};
   padding: 2rem;
+  margin-bottom: 2rem;
 `;
 
 export const AreaInputsDisplayFlex = styled.div`
@@ -46,4 +47,13 @@ export const Select = styled.select`
   padding: 0.75rem 1rem;
   color: ${(props) => props.theme["gray-300"]};
   font-size: 0.9rem;
+`;
+
+export const ButtonAdd = styled.div`
+  position: fixed;
+  bottom: 1rem;
+  right: 1.25rem;
+
+  display: flex;
+  gap: 1rem;
 `;

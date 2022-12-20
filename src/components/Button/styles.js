@@ -7,6 +7,7 @@ export const Container = styled.button`
   gap: 0.5rem;
   font-size: 0.9rem;
   height: 50px;
+  padding: 0 1.5rem;
   border: 1px solid
     ${(props) =>
       props.type === "cancel" ? `${props.theme["gray-600"]}` : "transparent"};
@@ -15,10 +16,10 @@ export const Container = styled.button`
     props.type === "cancel"
       ? `${props.theme["gray-900"]}`
       : `${props.theme.secondary}`};
-  color: ${(props) => props.theme["gray-100"]};
-  cursor: pointer;
-  width: 14rem;
+  color: ${(props) => props.theme.white};
+  cursor: pointer;  
   border-radius: 5px;
+  border:none;
 
   &:hover {
     opacity: 0.9;

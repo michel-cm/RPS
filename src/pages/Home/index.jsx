@@ -1,10 +1,79 @@
 import * as C from "./styles";
+import { Button } from '../../components/Button';
 
 export function Home() {
   return (
     <C.Container>
+      <h2>Atestado médico de saúde ocupacional</h2>
       <C.AreaIdentificacao>
-        <h2>ASO - Atestado de saúde ocupacional</h2>
+        <h2>Empresa</h2>
+        <C.AreaInputsDisplayFlex>
+          <C.InputColumn
+            style={{
+              width: "350px",
+            }}
+          >
+            <label>Razão Social</label>
+            <C.Input type={"text"} />
+          </C.InputColumn>
+
+          <C.InputColumn
+            style={{
+              width: "150px",
+            }}
+          >
+            <label>CNPJ/CEI</label>
+            <C.Input type={"text"} />
+          </C.InputColumn>
+        </C.AreaInputsDisplayFlex>
+
+        <C.AreaInputsDisplayFlex
+          style={{
+            gap: "1rem",
+          }}
+        >
+          <C.InputColumn
+            style={{
+              width: "350px",
+            }}
+          >
+            <label>Rua</label>
+            <C.Input type={"text"} />
+          </C.InputColumn>
+          <C.InputColumn
+            style={{
+              width: "100px",
+            }}
+          >
+            <label>N°</label>
+            <C.Input type={"number"} />
+          </C.InputColumn>
+          <C.InputColumn
+            style={{
+              width: "150px",
+            }}
+          >
+            <label>Bairro</label>
+            <C.Input type={"number"} />
+          </C.InputColumn>
+          <C.InputColumn
+            style={{
+              width: "150px",
+            }}
+          >
+            <label>Cidade</label>
+            <C.Input type={"text"} />
+          </C.InputColumn>
+        </C.AreaInputsDisplayFlex>
+
+        <C.AreaInputsDisplayFlex
+          style={{
+            gap: "1rem",
+          }}
+        ></C.AreaInputsDisplayFlex>
+      </C.AreaIdentificacao>
+      <C.AreaIdentificacao>
+        <h2>Funcionário</h2>
         <C.AreaInputsDisplayFlex>
           <C.InputColumn
             style={{
@@ -20,27 +89,19 @@ export function Home() {
               width: "150px",
             }}
           >
-            <label>CPF</label>
+            <label>CTPS</label>
             <C.Input type={"text"} required maxLength={11} />
           </C.InputColumn>
 
           <C.InputColumn
             style={{
-              width: "180px",
+              width: "150px",
             }}
           >
-            <label>Idade</label>
-            <C.Input type={"number"} />
+            <label>Data nascimento</label>
+            <C.Input type={"date"} />
           </C.InputColumn>
         </C.AreaInputsDisplayFlex>
-        <C.InputColumn
-          style={{
-            width: "350px",
-          }}
-        >
-          <label>Nome da empresa</label>
-          <C.Input type={"text"} required />
-        </C.InputColumn>
 
         <C.AreaInputsDisplayFlex
           style={{
@@ -55,19 +116,10 @@ export function Home() {
             <label>Função</label>
             <C.Select>
               <option value="branco"></option>
-              <option value="solteiro">Tratorista</option>
-              <option value="casado">Mecanico</option>
-              <option value="viuvo">Panhador de café agrícola</option>
+              <option value="tratorista">Tratorista</option>
+              <option value="mecanico">Mecanico</option>
+              <option value="panhador">Panhador de café agrícola</option>
             </C.Select>
-          </C.InputColumn>
-
-          <C.InputColumn
-            style={{
-              width: "200px",
-            }}
-          >
-            <label>Setor</label>
-            <C.Input type={"text"} />
           </C.InputColumn>
         </C.AreaInputsDisplayFlex>
 
@@ -77,6 +129,10 @@ export function Home() {
           }}
         ></C.AreaInputsDisplayFlex>
       </C.AreaIdentificacao>
+      <C.ButtonAdd>
+        <Button title="Cancelar" type={"cancel"}/>
+        <Button title="Adicionar novo item"/>
+      </C.ButtonAdd>
     </C.Container>
   );
 }
