@@ -9,18 +9,15 @@ export function Header() {
         <NavLink to="/" title="início">
           Home
         </NavLink>
-        <NavLink to="assistidos" title="assistidos">
-          Assistidos
+        <NavLink to="funcoes" title="funções">
+          Funcoes
         </NavLink>
-        <NavLink to="inventario" title="inventário">
-          Inventário
+        <NavLink to="normas" title="normas">
+          Normas
         </NavLink>
-        <NavLink to="profissionais" title="profissionais">
-          Profissionais
+        <NavLink to="atestados" title="atestados">
+          Atestados
         </NavLink>
-        <NavLink to="documentos" title="documentos">
-          Documentos
-        </NavLink>       
       </nav>
     </C.Container>
   );
