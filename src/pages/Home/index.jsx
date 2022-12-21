@@ -6,7 +6,7 @@ export function Home() {
     <C.Container>
       <h2>Atestado médico de saúde ocupacional</h2>
       <C.AreaIdentificacao>
-        <h2>Empresa</h2>
+        <h3>Empresa</h3>
         <C.AreaInputsDisplayFlex>
           <C.InputColumn
             style={{
@@ -73,7 +73,7 @@ export function Home() {
         ></C.AreaInputsDisplayFlex>
       </C.AreaIdentificacao>
       <C.AreaIdentificacao>
-        <h2>Funcionário</h2>
+        <h3>Funcionário</h3>
         <C.AreaInputsDisplayFlex>
           <C.InputColumn
             style={{
@@ -131,7 +131,7 @@ export function Home() {
       </C.AreaIdentificacao>
       <C.ButtonAdd>
         <Button title="Cancelar" type={"cancel"}/>
-        <Button title="Adicionar novo item"/>
+        <Button title="Gerar atestado"/>
       </C.ButtonAdd>
     </C.Container>
   );

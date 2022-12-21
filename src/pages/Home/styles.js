@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 3rem;
+  padding: 3rem 3rem 6rem 3rem;
 
- h2 {
-    margin-bottom: 2.5rem;
- }
+  h3,
+  h2 {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const AreaIdentificacao = styled.div`
@@ -52,7 +53,7 @@ export const Select = styled.select`
 export const ButtonAdd = styled.div`
   position: fixed;
   bottom: 1rem;
-  right: 1.25rem;
+  right: 1rem;
 
   display: flex;
   gap: 1rem;

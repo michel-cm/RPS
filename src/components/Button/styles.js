@@ -15,13 +15,16 @@ export const Container = styled.button`
   background-color: ${(props) =>
     props.type === "cancel"
       ? `${props.theme["gray-900"]}`
-      : `${props.theme.secondary}`};
+      : `${props.theme["green-500"]}`};
   color: ${(props) => props.theme.white};
-  cursor: pointer;  
+  cursor: pointer;
   border-radius: 5px;
-  border:none;
+  border: none;
+  letter-spacing: 1px;
+  font-weight: 400;
+  opacity: 0.9;
 
   &:hover {
-    opacity: 0.9;
+    opacity: 1;
   }
 `;
