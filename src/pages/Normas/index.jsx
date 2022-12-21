@@ -6,7 +6,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { useNormasContext } from "../../hooks/useNormasContext";
 import { useState } from "react";
 
-import { ModalAddNewItem } from "./modalAddNewItem";
+import { ModalAddNewItem } from "./ModalAddNewItem";
 import { ModalConfirm } from "../../components/ModalConfirm";
 
 export function Normas() {
