@@ -4,7 +4,7 @@ export function Button({ title, fn, type }) {
   return (
     <>
       {type === undefined ? (
-        <C.Container onClick={fn} disabled={true}> 
+        <C.Container onClick={fn}>
           <p>{title}</p>
         </C.Container>
       ) : (

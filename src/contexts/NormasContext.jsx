@@ -6,31 +6,33 @@ export const NormasContext = createContext({});
 import { Api } from "../services/Api";
 
 export function NormasContextProvider({ children }) {
-  const [normas, setNormas] = useState([]);
   const [exames, setExames] = useState([]);
   const [riscosOcupacionais, setRiscosOcupacionais] = useState([]);
 
-  const getAllNormas = useCallback(async () => {
-    await Api.getAllNormas().then((data) => {
-      setNormas(data);
+  const getAllRiscosOcupacionais = useCallback(async () => {
+    await Api.getAllRiscosOcupacionais().then((data) => {
+      setRiscosOcupacionais(data);
     });
   }, []);
 
-  useEffect(() => {
-    if (normas.length === 0) {
-      getAllNormas();
-    }
-  }, [normas]);
+  const addNewCategoriaRiscoOcupacional = async (nome) => {
+    await Api.addNewRiscoOcupacional(nome);
+  };
 
   useEffect(() => {
-    if (normas.length > 0) {
-      setExames(normas[0].exames);
-      setRiscosOcupacionais(normas[0].riscosOcupacionais);
+    if (riscosOcupacionais.length === 0) {
+      getAllRiscosOcupacionais();
     }
-  }, [normas, exames, riscosOcupacionais]);
+  }, [riscosOcupacionais]);
 
   return (
-    <NormasContext.Provider value={{ normas, exames, riscosOcupacionais }}>
+    <NormasContext.Provider
+      value={{
+        riscosOcupacionais,
+        getAllRiscosOcupacionais,
+        addNewCategoriaRiscoOcupacional,
+      }}
+    >
       {children}
     </NormasContext.Provider>
   );

@@ -5,55 +5,42 @@ import {
   getDocs,
   updateDoc,
   deleteDoc,
+  DocumentReference,
 } from "firebase/firestore";
 
 import { database, firebase } from "./firebase";
 
 export const Api = {
-  getAllNormas: async () => {
+  getAllRiscosOcupacionais: async () => {
     const list = [];
 
-    let results = await getDocs(collection(database, "normas"));
+    let results = await getDocs(collection(database, "riscosOcupacionais"));
     results.forEach((result) => {
       let data = result.data();
+
       list.push({
-        exames:data.exames,
-        riscosOcupacionais : data.riscosOcupacionais
+        id: result.id,
+        categoria: data.categoria,
+        riscos: data.riscos,
       });
     });
+    console.log(list);
     return list;
   },
 
-  /*identificacao,
-  endereco,
-  condicoesSaude,
-  condicoesHabitacionais,
-  composicaoFamiliar,
-  acessoProgramasSociais,*/
-  addNewAssistido: async (assistido) => {
-    await database.collection("assistidos").doc().set(
-      assistido
-      /* {
-        identificacao: {
-          identificacao,
-        },
-        endereco: {
-          endereco,
-        },
-        condicoesSaude: {
-          condicoesSaude,
-        },
-        condicoesHabitacionais: {
-          condicoesHabitacionais,
-        },
-        composicaoFamiliar: {
-          composicaoFamiliar,
-        },
-        acessoProgramasSociais: {
-          acessoProgramasSociais,
-        },
-      },*/
+  addNewCategoriaRiscoOcupacional: async (nome) => {
+    await database.collection("riscosOcupacionais").doc().set(
+      {
+        categoria: nome,
+        riscos: [],
+      },
+      { merge: true }
     );
+  },
+
+  addNewRiscoOcupacional: async (idCategoria, item) => {
+    const normasRef = doc(database, "riscosOcupacionais", idCategoria);
+    console.log(normasRef);
   },
 
   /*

@@ -20,6 +20,7 @@ export const AreaCategoria = styled.div`
 `;
 
 export const AreaItems = styled.div`
+
   display: flex;
   gap: 1rem 3rem;
 
@@ -66,7 +67,7 @@ export const ButtonCadastrarItem = styled.button`
   }
 `;
 
-export const IconSearch = styled.div`
+export const Icon = styled.div`
   display: flex;
   margin-left: -80px;
 

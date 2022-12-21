@@ -4,9 +4,23 @@ import { Button } from "../../components/Button";
 import { BsFillTrashFill } from "react-icons/bs";
 
 import { useNormasContext } from "../../hooks/useNormasContext";
+import { useState } from "react";
+
+import { ModalAddNewItem } from "./modalAddNewItem";
+import { ModalConfirm } from "../../components/ModalConfirm";
 
 export function Normas() {
-  const { normas, exames, riscosOcupacionais } = useNormasContext();
+  const { riscosOcupacionais } = useNormasContext();
+  const [modalAddNewItemOpen, setModalAddNewItemOpen] = useState(false);
+  const [modalConfirmDeleteOpen, setModalConfirmDeleteOpen] = useState(false);
+  const [nameNewCategoria, setNameNewCategoria] = useState("");
+
+  function handleShowModalAddNewItem() {
+    setModalAddNewItemOpen(true);
+  }
+  function handleShowModalConfirmDelete() {
+    setModalConfirmDeleteOpen(true);
+  }
 
   return (
     <C.Container>
@@ -23,20 +37,20 @@ export function Normas() {
                     value={risco.categoria}
                     readOnly
                   />
-                  {risco.variacoes.length > 0 && (
+                  {risco.riscos.length > 0 && (
                     <C.AreaItems>
-                      {risco.variacoes.map((item, index) => {
+                      {risco.riscos.map((item, index) => {
                         return (
                           <>
                             <input
-                              key={item.id}
                               type={"text"}
-                              value={item.nome}
+                              value={item.risco}
                               readOnly
+                              key={item.id}
                             />
-                            <C.IconSearch>
+                            <C.Icon onClick={handleShowModalConfirmDelete}>
                               <BsFillTrashFill size={14} />
-                            </C.IconSearch>
+                            </C.Icon>
                           </>
                         );
                       })}
@@ -60,8 +74,21 @@ export function Normas() {
             margin: "1.5rem 0 1rem 0",
           }}
         >
-          <Button title={"Cadastrar nova categoria"} />
+          <Button
+            fn={handleShowModalAddNewItem}
+            title={"Cadastrar nova categoria"}
+          />
         </div>
+        {modalAddNewItemOpen && (
+          <ModalAddNewItem
+            setModal={setModalAddNewItemOpen}
+            nameNewCategoria={nameNewCategoria}
+            setNameNewCategoria={setNameNewCategoria}
+          />
+        )}
+        {modalConfirmDeleteOpen && (
+          <ModalConfirm setModal={setModalConfirmDeleteOpen} />
+        )}
       </C.AreaIdentificacao>
     </C.Container>
   );
