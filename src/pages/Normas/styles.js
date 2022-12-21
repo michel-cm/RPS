@@ -16,19 +16,22 @@ export const AreaIdentificacao = styled.div`
 `;
 
 export const AreaCategoria = styled.div`
-  padding-bottom: 1.75rem;
+  padding-bottom: 2rem;
 `;
 
 export const AreaItems = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 1rem 3rem;
+
+  align-items: center;
 
   flex-wrap: wrap;
 
   input {
     font-size: 0.9rem;
     flex: 1;
-    min-width: 30%;
+    min-width: 25%;
+    max-width: 30%;
     border: none;
     padding: 0.75rem 1rem;
     background: ${(props) => props.theme["gray-900"]};
@@ -42,9 +45,6 @@ export const InputTitle = styled.input`
   background: none;
   border: none;
   color: ${(props) => props.theme.white};
-  width: cover;
-  display: inline;
-
   margin-bottom: 0.25rem;
 
   &:focus {
@@ -63,5 +63,17 @@ export const ButtonCadastrarItem = styled.button`
 
   &:hover {
     opacity: 0.8;
+  }
+`;
+
+export const IconSearch = styled.div`
+  display: flex;
+  margin-left: -80px;
+
+  opacity: 0.8;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
   }
 `;

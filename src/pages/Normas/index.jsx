@@ -1,35 +1,13 @@
 import * as C from "./styles";
 import { Button } from "../../components/Button";
 
-import { BsFillEyeFill } from "react-icons/bs";
+import { BsFillTrashFill } from "react-icons/bs";
 
-
-const riscosOcupacionais = [
-  {
-    id: "dsjdasjkdsa",
-    categoria: "Físicos",
-    variacoes: [
-      "Ruídos",
-      "Vibrações",
-      "Vibrações",
-      "Trabalho Máquinas/Equipamentos",
-      "Radiações",
-      "Frio/Calor",
-    ],
-  },
-  {
-    id: "aajdasjkdsa",
-    categoria: "Químicos",
-    variacoes: ["Poeiras", "Pro. QI", "Gases/Vapores"],
-  },
-  {
-    id: "bbjdasjkdsa",
-    categoria: "Biológios",
-    variacoes: ["Vírus/Bactérias", "Fungos", "Parasitas"],
-  },
-];
+import { useNormasContext } from "../../hooks/useNormasContext";
 
 export function Normas() {
+  const { normas, exames, riscosOcupacionais } = useNormasContext();
+
   return (
     <C.Container>
       <C.title>Riscos ocupacionais</C.title>
@@ -37,19 +15,33 @@ export function Normas() {
         {riscosOcupacionais.length > 0 &&
           riscosOcupacionais.map((risco, index) => {
             return (
-              <C.AreaCategoria>
-                <div key={risco.id}>
+              <C.AreaCategoria key={risco.id}>
+                <div>
                   <C.InputTitle
                     style={{}}
                     type="text"
                     value={risco.categoria}
+                    readOnly
                   />
-
-                  <C.AreaItems>
-                    {risco.variacoes.map((item, index) => {
-                      return <input key={index} type={"text"} value={item} />;
-                    })}
-                  </C.AreaItems>
+                  {risco.variacoes.length > 0 && (
+                    <C.AreaItems>
+                      {risco.variacoes.map((item, index) => {
+                        return (
+                          <>
+                            <input
+                              key={item.id}
+                              type={"text"}
+                              value={item.nome}
+                              readOnly
+                            />
+                            <C.IconSearch>
+                              <BsFillTrashFill size={14} />
+                            </C.IconSearch>
+                          </>
+                        );
+                      })}
+                    </C.AreaItems>
+                  )}
                 </div>
                 <div
                   style={{

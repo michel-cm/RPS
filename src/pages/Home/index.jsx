@@ -89,6 +89,14 @@ export function Home() {
               width: "150px",
             }}
           >
+            <label>CPF</label>
+            <C.Input type={"text"} required maxLength={11} />
+          </C.InputColumn>
+          <C.InputColumn
+            style={{
+              width: "150px",
+            }}
+          >
             <label>CTPS</label>
             <C.Input type={"text"} required maxLength={11} />
           </C.InputColumn>
