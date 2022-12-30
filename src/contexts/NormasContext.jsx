@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { createContext, useEffect, useState } from "react";
+import { v1 as uuidv1 } from "uuid";
 
 export const NormasContext = createContext({});
 
@@ -19,6 +20,12 @@ export function NormasContextProvider({ children }) {
     await Api.addNewCategoriaRiscoOcupacional(nome);
   };
 
+  const addNewItemForGrouRisc = async (idCategoria, nomeRiscoItem) => {
+    const item = { id: uuidv1(), risco: nomeRiscoItem };
+
+    await Api.addNewRiscoOcupacional(idCategoria, item);
+  };
+
   useEffect(() => {
     if (riscosOcupacionais.length === 0) {
       getAllRiscosOcupacionais();
@@ -31,6 +38,7 @@ export function NormasContextProvider({ children }) {
         riscosOcupacionais,
         getAllRiscosOcupacionais,
         addNewCategoriaRiscoOcupacional,
+        addNewItemForGrouRisc,
       }}
     >
       {children}

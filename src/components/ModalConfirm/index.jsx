@@ -1,7 +1,7 @@
 import * as C from "./styles";
 import { BsFillXCircleFill } from "react-icons/bs";
 
-export const ModalConfirm = ({ setModal }) => {
+export const ModalConfirm = ({ setModal, fnIfYes }) => {
   const handleCloseModal = () => {
     setModal(false);
   };

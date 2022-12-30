@@ -29,17 +29,25 @@ export const Api = {
   },
 
   addNewCategoriaRiscoOcupacional: async (nome) => {
-    await database.collection("riscosOcupacionais").doc().set(
-      {
-        categoria: nome,
-        riscos: [],
-      },   
-    );
+    await database.collection("riscosOcupacionais").doc().set({
+      categoria: nome,
+      riscos: [],
+    });
   },
 
   addNewRiscoOcupacional: async (idCategoria, item) => {
     const normasRef = doc(database, "riscosOcupacionais", idCategoria);
-    console.log(normasRef);
+    await updateDoc(
+      normasRef,
+      {
+        riscos: firebase.firestore.FieldValue.arrayUnion({
+          id: item.id,
+          risco: item.risco,
+        }),
+      },
+      { merge: true }
+    );
+  
   },
 
   /*
