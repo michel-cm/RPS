@@ -30,8 +30,15 @@ export function Normas() {
           riscosOcupacionais.map((risco, index) => {
             return (
               <C.AreaCategoria key={risco.id}>
-                <div>
-                  <C.InputTitle type="text" value={risco.categoria} readOnly />
+                <>
+                  <C.HeaderHroupRiscos>
+                    <C.InputTitle
+                      type="text"
+                      value={risco.categoria}
+                      readOnly
+                    />
+                    <span>excluir grupo</span>
+                  </C.HeaderHroupRiscos>
                   {risco.riscos.length > 0 && (
                     <C.AreaItems>
                       {risco.riscos.map((item, index) => {
@@ -51,7 +58,7 @@ export function Normas() {
                       })}
                     </C.AreaItems>
                   )}
-                </div>
+                </>
                 <div
                   style={{
                     margin: "1.5rem 0 1rem 0",

@@ -16,7 +16,43 @@ export const AreaIdentificacao = styled.div`
 `;
 
 export const AreaCategoria = styled.div`
-  padding-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid ${(props) => props.theme["gray-600"]};
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+`;
+
+export const HeaderHroupRiscos = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 0.75rem;
+    color: orange;
+    opacity: 0.8;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const InputTitle = styled.input`
+  padding: 0.75rem 0rem;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: ${(props) => props.theme.white};
+  margin: 0 0.5rem 0.25rem 0;
+
+  &:focus {
+    padding: 0.75rem 0.75rem;
+    background: ${(props) => props.theme["gray-900"]};
+    color: ${(props) => props.theme["gray-300"]};
+  }
 `;
 
 export const AreaItems = styled.div`
@@ -58,25 +94,11 @@ export const Icon = styled.div`
   }
 `;
 
-export const InputTitle = styled.input`
-  padding: 0.75rem 0rem;
-  font-size: 1.2rem;
-  background: none;
-  border: none;
-  color: ${(props) => props.theme.white};
-  margin-bottom: 0.25rem;
-
-  &:focus {
-    padding: 0.75rem 0.75rem;
-    background: ${(props) => props.theme["gray-900"]};
-    color: ${(props) => props.theme["gray-300"]};
-  }
-`;
-
 export const ButtonCadastrarItem = styled.button`
   background: none;
   border: none;
   font-weight: bold;
+  font-size: 0.9rem;
   color: ${(props) => props.theme["green-500"]};
   cursor: pointer;
 
