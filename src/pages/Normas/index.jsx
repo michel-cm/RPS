@@ -6,17 +6,17 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { useNormasContext } from "../../hooks/useNormasContext";
 import { useState } from "react";
 
-import { ModalAddNewItem } from "./ModalAddNewItem";
+import { ModalAddNewCategory } from "./ModalAddNewCategory";
 import { ModalConfirm } from "../../components/ModalConfirm";
 
 export function Normas() {
   const { riscosOcupacionais } = useNormasContext();
-  const [modalAddNewItemOpen, setModalAddNewItemOpen] = useState(false);
+  const [modalAddNewCategoryOpen, setModalAddNewCategoryOpen] = useState(false);
   const [modalConfirmDeleteOpen, setModalConfirmDeleteOpen] = useState(false);
   const [nameNewCategoria, setNameNewCategoria] = useState("");
 
-  function handleShowModalAddNewItem() {
-    setModalAddNewItemOpen(true);
+  function handleShowModalAddNewCategory() {
+    setModalAddNewCategoryOpen(true);
   }
   function handleShowModalConfirmDelete() {
     setModalConfirmDeleteOpen(true);
@@ -31,17 +31,12 @@ export function Normas() {
             return (
               <C.AreaCategoria key={risco.id}>
                 <div>
-                  <C.InputTitle
-                    style={{}}
-                    type="text"
-                    value={risco.categoria}
-                    readOnly
-                  />
+                  <C.InputTitle type="text" value={risco.categoria} readOnly />
                   {risco.riscos.length > 0 && (
                     <C.AreaItems>
                       {risco.riscos.map((item, index) => {
                         return (
-                          <>
+                          <C.Item key={item.id}>
                             <input
                               type={"text"}
                               value={item.risco}
@@ -51,7 +46,7 @@ export function Normas() {
                             <C.Icon onClick={handleShowModalConfirmDelete}>
                               <BsFillTrashFill size={14} />
                             </C.Icon>
-                          </>
+                          </C.Item>
                         );
                       })}
                     </C.AreaItems>
@@ -75,13 +70,13 @@ export function Normas() {
           }}
         >
           <Button
-            fn={handleShowModalAddNewItem}
+            fn={handleShowModalAddNewCategory}
             title={"Cadastrar nova categoria"}
           />
         </div>
-        {modalAddNewItemOpen && (
-          <ModalAddNewItem
-            setModal={setModalAddNewItemOpen}
+        {modalAddNewCategoryOpen && (
+          <ModalAddNewCategory
+            setModal={setModalAddNewCategoryOpen}
             nameNewCategoria={nameNewCategoria}
             setNameNewCategoria={setNameNewCategoria}
           />

@@ -33,8 +33,7 @@ export const Api = {
       {
         categoria: nome,
         riscos: [],
-      },
-      { merge: true }
+      },   
     );
   },
 

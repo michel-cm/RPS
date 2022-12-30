@@ -11,7 +11,7 @@ export const title = styled.h2`
 export const AreaIdentificacao = styled.div`
   border-radius: 5px;
   background: ${(props) => props.theme["gray-800"]};
-  padding: 2rem;
+  padding: 1.5rem;
   margin-bottom: 2rem;
 `;
 
@@ -20,9 +20,9 @@ export const AreaCategoria = styled.div`
 `;
 
 export const AreaItems = styled.div`
-
-  display: flex;
-  gap: 1rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 
   align-items: center;
 
@@ -30,19 +30,37 @@ export const AreaItems = styled.div`
 
   input {
     font-size: 0.9rem;
-    flex: 1;
-    min-width: 25%;
-    max-width: 30%;
+    width: 100%;
+    height: 3rem;
     border: none;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
     background: ${(props) => props.theme["gray-900"]};
     color: ${(props) => props.theme["gray-300"]};
   }
 `;
 
+export const Item = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  opacity: 0.8;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+`;
+
 export const InputTitle = styled.input`
   padding: 0.75rem 0rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background: none;
   border: none;
   color: ${(props) => props.theme.white};
@@ -64,17 +82,5 @@ export const ButtonCadastrarItem = styled.button`
 
   &:hover {
     opacity: 0.8;
-  }
-`;
-
-export const Icon = styled.div`
-  display: flex;
-  margin-left: -80px;
-
-  opacity: 0.8;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 1;
   }
 `;

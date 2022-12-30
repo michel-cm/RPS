@@ -16,7 +16,7 @@ export function NormasContextProvider({ children }) {
   }, []);
 
   const addNewCategoriaRiscoOcupacional = async (nome) => {
-    await Api.addNewRiscoOcupacional(nome);
+    await Api.addNewCategoriaRiscoOcupacional(nome);
   };
 
   useEffect(() => {
