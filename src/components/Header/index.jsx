@@ -12,8 +12,11 @@ export function Header() {
         <NavLink to="funcoes" title="funções">
           Funcoes
         </NavLink>
-        <NavLink to="normas" title="normas">
-          Normas
+        <NavLink to="riscos-ocupacionais" title="riscos ocupacionais">
+          Riscos ocupacionais
+        </NavLink>
+        <NavLink to="exames" title="exames médicos">
+          Exames
         </NavLink>
         <NavLink to="atestados" title="atestados">
           Atestados

@@ -24,7 +24,6 @@ export const Api = {
         riscos: data.riscos,
       });
     });
-    console.log(list);
     return list;
   },
 
@@ -47,9 +46,22 @@ export const Api = {
       },
       { merge: true }
     );
-  
   },
 
+  deleItemForGroupRisc: async (idCategoria, newItem) => {
+    const riscosOcupacionaisRef = doc(
+      database,
+      "riscosOcupacionais",
+      idCategoria
+    );
+    await updateDoc(riscosOcupacionaisRef, {
+      riscos: newItem,
+    });
+  },
+
+  deleteGroupRisc: async (idCategoria) => {
+    await deleteDoc(doc(database, "riscosOcupacionais", idCategoria));
+  },
   /*
   updateAssistido: async (question, id) => {
     const questionRef = doc(database, "questions", id);
