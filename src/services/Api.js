@@ -62,6 +62,24 @@ export const Api = {
   deleteGroupRisc: async (idCategoria) => {
     await deleteDoc(doc(database, "riscosOcupacionais", idCategoria));
   },
+
+  // Exames \/
+  getAllExames: async () => {
+    const list = [];
+
+    let results = await getDocs(collection(database, "exames"));
+    results.forEach((result) => {
+      let data = result.data();
+
+      list.push({
+        id: result.id,
+        cod: data.cod,
+        nome: data.nome,
+      });
+    });
+    return list;
+  },
+
   /*
   updateAssistido: async (question, id) => {
     const questionRef = doc(database, "questions", id);

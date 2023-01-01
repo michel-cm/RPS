@@ -6,7 +6,6 @@ export const NormasContext = createContext({});
 
 import { Api } from "../services/Api";
 
-
 export function NormasContextProvider({ children }) {
   const [exames, setExames] = useState([]);
   const [riscosOcupacionais, setRiscosOcupacionais] = useState([]);
@@ -42,18 +41,32 @@ export function NormasContextProvider({ children }) {
   };
 
   const deleteGroupRisc = async (idGroup) => {
-   await Api.deleteGroupRisc(idGroup);
+    await Api.deleteGroupRisc(idGroup);
     getAllRiscosOcupacionais();
   };
 
   useEffect(() => {
     if (riscosOcupacionais.length === 0) {
       getAllRiscosOcupacionais();
+    } else {
+      return;
     }
   }, [riscosOcupacionais]);
 
   //Exames Context//
-  
+  const getAllExames = useCallback(async () => {
+    await Api.getAllExames().then((data) => {
+      setExames(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (exames.length === 0) {
+      getAllExames();
+    } else {
+      return;
+    }
+  }, [exames]);
 
   return (
     <NormasContext.Provider
@@ -64,6 +77,9 @@ export function NormasContextProvider({ children }) {
         addNewItemForGrouRisc,
         deleteItemForGroupRisc,
         deleteGroupRisc,
+
+        exames,
+        getAllExames
       }}
     >
       {children}
