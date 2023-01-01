@@ -14,6 +14,7 @@ export function Router() {
         <Route path="/funcoes" element={<Funcoes />} />
         <Route path="/riscos-ocupacionais" element={<RiscosOcupacionais />} />
         <Route path="/exames" element={<Exames />} />
+        <Route path="/exames/:id" element={<Exames />} />
       </Route>
     </Routes>
   );

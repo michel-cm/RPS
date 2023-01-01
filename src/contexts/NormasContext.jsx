@@ -60,6 +60,18 @@ export function NormasContextProvider({ children }) {
     });
   }, []);
 
+  const addNewExame = async (cod, nome) => {
+    await Api.addNewExame(cod, nome);
+  };
+
+  const deleteExame = async (idExame) => {
+    await Api.deleteExame(idExame);
+  };
+
+  const updateExame = async (idExame, cod, nome) => {
+    await Api.updateExame(idExame, cod, nome);
+  };
+
   useEffect(() => {
     if (exames.length === 0) {
       getAllExames();
@@ -79,7 +91,10 @@ export function NormasContextProvider({ children }) {
         deleteGroupRisc,
 
         exames,
-        getAllExames
+        getAllExames,
+        addNewExame,
+        deleteExame,
+        updateExame,
       }}
     >
       {children}

@@ -69,12 +69,15 @@ export const InputExame = styled.input`
   }
 `;
 
-export const Icon = styled.div`
+export const AreaIcon = styled.div`
   display: flex;
   position: absolute;
   top: 1rem;
   right: 1rem;
+  gap: 1.5rem;
+`;
 
+export const Icon = styled.div`
   opacity: 0.8;
 
   &:hover {

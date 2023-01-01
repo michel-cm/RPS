@@ -1,25 +1,35 @@
 import * as C from "./styles";
 import { BsFillXCircleFill } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNormasContext } from "../../../hooks/useNormasContext";
 
-export function ModalAddNewExame({ setModal }) {
+export function ModalEditExame({ setModal, idExameForUpdate }) {
   const handleCloseModal = () => {
     setModal(false);
   };
 
-  const { addNewExame, getAllExames } = useNormasContext();
+  const { getAllExames, exames, updateExame } = useNormasContext();
 
   const [codeExame, setCodeExame] = useState("");
   const [nameNewExame, setNameNewExame] = useState("");
 
-  async function handleAddNewExame() {
-    await addNewExame(codeExame, nameNewExame).then(() => {
-      getAllExames().then(() => {
+  const getExameForId = () => {
+    const filtered = exames.filter((exame) => exame.id == idExameForUpdate);
+    setCodeExame(filtered[0].cod);
+    setNameNewExame(filtered[0].nome);
+  };
+
+  const handleUpdateExame = async (idExame, cod, nome) => {
+    await updateExame(idExame, cod, nome).then(async () => {
+      await getAllExames().then(() => {
         handleCloseModal();
       });
     });
-  }
+  };
+
+  useEffect(() => {
+    getExameForId();
+  }, [idExameForUpdate]);
 
   return (
     <C.Container>
@@ -31,25 +41,29 @@ export function ModalAddNewExame({ setModal }) {
             }}
           />
         </C.AreaClose>
-        <h3>Cadastrar novo Item</h3>
+        <h3>Editar procedimento</h3>
         <C.AreaInput>
           <input
             type="text"
+            value={codeExame || ""}
             placeholder="Código"
             onChange={(e) => setCodeExame(e.target.value)}
           />
           <textarea
             rows="5"
+            value={nameNewExame || ""}
             placeholder="Nome do procedimento"
             onChange={(e) => setNameNewExame(e.target.value)}
           ></textarea>
         </C.AreaInput>
         <div>
           <C.ButtonConfirm
-            onClick={handleAddNewExame}
+            onClick={() =>
+              handleUpdateExame(idExameForUpdate, codeExame, nameNewExame)
+            }
             disabled={nameNewExame && codeExame ? false : true}
           >
-            Adicionar
+            Salvar
           </C.ButtonConfirm>
           <C.ButtonNot onClick={handleCloseModal}>Cancelar</C.ButtonNot>
         </div>

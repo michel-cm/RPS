@@ -80,6 +80,25 @@ export const Api = {
     return list;
   },
 
+  addNewExame: async (cod, nome) => {
+    await database.collection("exames").doc().set({
+      cod,
+      nome,
+    });
+  },
+
+  deleteExame: async (idExame) => {
+    await deleteDoc(doc(database, "exames", idExame));
+  },
+
+  updateExame: async (id, cod, nome) => {
+    const exameRef = doc(database, "exames", id);
+    await updateDoc(exameRef, {
+      cod: cod,
+      nome: nome,
+    });
+  },
+
   /*
   updateAssistido: async (question, id) => {
     const questionRef = doc(database, "questions", id);
