@@ -9,6 +9,7 @@ import { Api } from "../services/Api";
 export function NormasContextProvider({ children }) {
   const [exames, setExames] = useState([]);
   const [riscosOcupacionais, setRiscosOcupacionais] = useState([]);
+  const [funcoes, setFuncoes] = useState([]);
 
   //Riscos Ocupacionais Context//
   const getAllRiscosOcupacionais = useCallback(async () => {
@@ -80,6 +81,29 @@ export function NormasContextProvider({ children }) {
     }
   }, [exames]);
 
+  //Funções
+  const getAllFuncoes = async () => {
+    await Api.getAllFuncoes().then((data) => {
+      setFuncoes(data);
+    });
+  };
+
+  const addNewFuncao = async (nomeFuncao, exames, riscosOcupacionais) => {
+    await Api.addNewFuncao(nomeFuncao, exames, riscosOcupacionais);
+  };
+
+  const deletFuncao = async (idFuncao) => {
+    await Api.deleteFuncao(idFuncao);
+  };
+
+  useEffect(() => {
+    if (funcoes.length === 0) {
+      getAllFuncoes();
+    } else {
+      return;
+    }
+  }, [funcoes]);
+
   return (
     <NormasContext.Provider
       value={{
@@ -95,6 +119,11 @@ export function NormasContextProvider({ children }) {
         addNewExame,
         deleteExame,
         updateExame,
+
+        funcoes,
+        getAllFuncoes,
+        addNewFuncao,
+        deletFuncao
       }}
     >
       {children}

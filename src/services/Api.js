@@ -99,6 +99,36 @@ export const Api = {
     });
   },
 
+  // Funcoes
+  getAllFuncoes: async () => {
+    const list = [];
+
+    let results = await getDocs(collection(database, "funcoes"));
+    results.forEach((result) => {
+      let data = result.data();
+
+      list.push({
+        id: result.id,
+        funcaoNome: data.funcaoNome,
+        exames: data.exames,
+        riscosOcupacionais: data.riscosOcupacionais,
+      });
+    });
+    return list;
+  },
+
+  addNewFuncao: async (nomeFuncao, exames, riscosOcupacionais) => {
+    await database.collection("funcoes").doc().set({
+      funcaoNome: nomeFuncao,
+      riscosOcupacionais: riscosOcupacionais,
+      exames: exames,
+    });
+  },
+
+  deleteFuncao: async (idFuncao) => {
+    await deleteDoc(doc(database, "funcoes", idFuncao));
+  },
+
   /*
   updateAssistido: async (question, id) => {
     const questionRef = doc(database, "questions", id);

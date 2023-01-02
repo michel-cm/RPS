@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import { ModalAddNewCategory } from "./ModalAddNewCategory";
 import { ModalAddNewItemForGroupRisc } from "./ModalAddNewItemForGroupRisc";
+import { ModalEditRisc } from "./ModalEditeRisc";
 
 export function RiscosOcupacionais() {
   const { riscosOcupacionais, deleteItemForGroupRisc, deleteGroupRisc } =
@@ -16,10 +17,12 @@ export function RiscosOcupacionais() {
   const [modalAddNewCategoryOpen, setModalAddNewCategoryOpen] = useState(false);
   const [modalAddNewItemForGroupRisc, setModalAddNewItemForGroupRisc] =
     useState(false);
-  const [modalConfirmDeleteOpen, setModalConfirmDeleteOpen] = useState(false);
+  const [modalEditRisco, setModalEditRisco] = useState(false);
 
   const [nameNewCategoria, setNameNewCategoria] = useState("");
   const [idCategoryForAddNewItem, setIdCategoryForAddNewItem] = useState("");
+
+  const [idCategoryForEdit, setIdCategoryForEdit] = useState("");
 
   function handleShowModalAddNewCategory() {
     setModalAddNewCategoryOpen(true);
@@ -28,6 +31,10 @@ export function RiscosOcupacionais() {
   function handleShowModalAddNewItemForGroupRisc(id) {
     setIdCategoryForAddNewItem(id);
     setModalAddNewItemForGroupRisc(true);
+  }
+
+  function handleShowEditRisc() {
+    setModalEditRisco(true);
   }
 
   function handleConfirmDelete(idGroup, idItem) {
@@ -54,9 +61,24 @@ export function RiscosOcupacionais() {
                       value={risco.categoria}
                       readOnly
                     />
-                    <span onClick={() => handleDeleteGroupRisc(risco.id)}>
-                      excluir grupo
-                    </span>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "1rem",
+                      }}
+                    >
+                      <span
+                        onClick={() => handleDeleteGroupRisc(risco.id)}
+                        style={{
+                          color: "white",
+                        }}
+                      >
+                        Editar grupo
+                      </span>
+                      <span onClick={() => handleDeleteGroupRisc(risco.id)}>
+                        excluir grupo
+                      </span>
+                    </div>
                   </C.HeaderHroupRiscos>
                   {risco.riscos.length > 0 && (
                     <C.AreaItems>
@@ -121,6 +143,7 @@ export function RiscosOcupacionais() {
             idCategory={idCategoryForAddNewItem}
           />
         )}
+        {modalEditRisco && <ModalEditRisc setModal={setModalEditRisco} />}
       </C.AreaIdentificacao>
     </C.Container>
   );

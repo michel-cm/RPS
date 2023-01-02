@@ -17,10 +17,7 @@ export function Header() {
         </NavLink>
         <NavLink to="exames" title="exames médicos">
           Exames
-        </NavLink>
-        <NavLink to="atestados" title="atestados">
-          Atestados
-        </NavLink>
+        </NavLink>       
       </nav>
     </C.Container>
   );
