@@ -5,13 +5,15 @@ import { useNormasContext } from "../../hooks/useNormasContext";
 import { useState } from "react";
 
 export function Home() {
-  const { funcoes } = useNormasContext();
+  const { funcoes, tiposExamesMedicos } = useNormasContext();
 
   const [empresa, setEmpresa] = useState({});
 
   const [funcionario, setFuncionario] = useState({});
 
   const [funcao, setFuncao] = useState("");
+
+  const [tipoExame, setTipoExame] = useState("");
 
   return (
     <C.Container>
@@ -202,7 +204,32 @@ export function Home() {
         >
           <C.InputColumn
             style={{
-              width: "250px",
+              width: "300px",
+            }}
+          >
+            <label>Tipo Exame</label>
+            <C.Select
+              onChange={(e) => setTipoExame(e.target.value)}
+              value={tipoExame}
+            >
+              <option value="branco"></option>
+              {tiposExamesMedicos.length > 0 &&
+                tiposExamesMedicos.map((tipo, index) => (
+                  <option key={tipo.id} value={tipo.id}>
+                    {tipo.nome}
+                  </option>
+                ))}
+            </C.Select>
+          </C.InputColumn>
+        </C.AreaInputsDisplayFlex>
+        <C.AreaInputsDisplayFlex
+          style={{
+            gap: "1rem",
+          }}
+        >
+          <C.InputColumn
+            style={{
+              width: "300px",
             }}
           >
             <label>Função</label>

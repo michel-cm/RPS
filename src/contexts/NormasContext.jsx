@@ -10,6 +10,7 @@ export function NormasContextProvider({ children }) {
   const [exames, setExames] = useState([]);
   const [riscosOcupacionais, setRiscosOcupacionais] = useState([]);
   const [funcoes, setFuncoes] = useState([]);
+  const [tiposExamesMedicos, setTiposExamesMedicos] = useState([]);
 
   //Riscos Ocupacionais Context//
   const getAllRiscosOcupacionais = useCallback(async () => {
@@ -104,6 +105,33 @@ export function NormasContextProvider({ children }) {
     }
   }, [funcoes]);
 
+  // Tipos Exames Medicos
+  const getAllTiposExames = async () => {
+    await Api.getAllTiposExamesMedicos().then((data) => {
+      setTiposExamesMedicos(data);
+    });
+  };
+
+  const deleteTipoExameMedico = async (idTipo) => {
+    await Api.deleteTipoExameMedico(idTipo);
+  };
+
+  const addNewTipoExame = async (tipo) => {
+    await Api.addNewTipoExameMedico(tipo);
+  };
+
+  const updateTipoExame = async (id, nome) => {
+    await Api.updateTipoExameMedico(id, nome);
+  };
+
+  useEffect(() => {
+    if (tiposExamesMedicos.length === 0) {
+      getAllTiposExames();
+    } else {
+      return;
+    }
+  }, [tiposExamesMedicos]);
+
   return (
     <NormasContext.Provider
       value={{
@@ -123,7 +151,13 @@ export function NormasContextProvider({ children }) {
         funcoes,
         getAllFuncoes,
         addNewFuncao,
-        deletFuncao
+        deletFuncao,
+
+        tiposExamesMedicos,
+        getAllTiposExames,
+        addNewTipoExame,
+        updateTipoExame,
+        deleteTipoExameMedico,
       }}
     >
       {children}

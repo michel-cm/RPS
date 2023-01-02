@@ -129,6 +129,39 @@ export const Api = {
     await deleteDoc(doc(database, "funcoes", idFuncao));
   },
 
+  // Tipos Exames Medicos
+  getAllTiposExamesMedicos: async () => {
+    const list = [];
+
+    let results = await getDocs(collection(database, "tiposExamesMedicos"));
+    results.forEach((result) => {
+      let data = result.data();
+
+      list.push({
+        id: result.id,
+        nome: data.nome,
+      });
+    });
+    return list;
+  },
+
+  addNewTipoExameMedico: async (tipo) => {
+    await database.collection("tiposExamesMedicos").doc().set({
+      nome: tipo,
+    });
+  },
+
+  updateTipoExameMedico: async (id, nome) => {
+    const exameRef = doc(database, "tiposExamesMedicos", id);
+    await updateDoc(exameRef, {
+      nome: nome,
+    });
+  },
+
+  deleteTipoExameMedico: async (idTipo) => {
+    await deleteDoc(doc(database, "tiposExamesMedicos", idTipo));
+  },
+
   /*
   updateAssistido: async (question, id) => {
     const questionRef = doc(database, "questions", id);
