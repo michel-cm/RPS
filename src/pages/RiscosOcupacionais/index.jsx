@@ -67,7 +67,8 @@ export function RiscosOcupacionais() {
                         gap: "1rem",
                       }}
                     >
-                      <span
+                      {/**
+                       <span
                         onClick={() => handleDeleteGroupRisc(risco.id)}
                         style={{
                           color: "white",
@@ -75,6 +76,9 @@ export function RiscosOcupacionais() {
                       >
                         Editar grupo
                       </span>
+                       
+                       */}
+
                       <span onClick={() => handleDeleteGroupRisc(risco.id)}>
                         excluir grupo
                       </span>

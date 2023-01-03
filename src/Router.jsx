@@ -6,6 +6,7 @@ import { Funcoes } from "./pages/Funcoes";
 import { RiscosOcupacionais } from "./pages/RiscosOcupacionais";
 import { Exames } from "./pages/Exames";
 import { TiposExamesMedicos } from "./pages/TiposExamesMedicos";
+import { Login } from "./pages/Login";
 
 export function Router() {
   return (
@@ -17,6 +18,9 @@ export function Router() {
         <Route path="/exames" element={<Exames />} />
         <Route path="/exames/:id" element={<Exames />} />
         <Route path="/tipos-exames" element={<TiposExamesMedicos />} />
+      </Route>
+      <Route>
+        <Route path="/login" element={<Login />} />
       </Route>
     </Routes>
   );

@@ -22,8 +22,6 @@ export function Funcoes() {
       }));
   }
 
-  console.log(funcoes);
-
   return (
     <C.Container>
       <C.title> Funções </C.title>

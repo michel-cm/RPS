@@ -4,11 +4,16 @@ import { Button } from "../../components/Button";
 import { useNormasContext } from "../../hooks/useNormasContext";
 import { useRef, useState } from "react";
 
+import { formatDate } from "../../helpers/dateFilter";
+
 import iconPdfSpr from "../../assets/iconPdfSpr.jpg";
 
 import ReactToPrint from "react-to-print";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Home() {
+  const { logoutAccount, handleUpdatePassowrd } = useAuth();
+
   const { funcoes, tiposExamesMedicos } = useNormasContext();
 
   const [empresa, setEmpresa] = useState({});
@@ -279,7 +284,15 @@ export function Home() {
           content={() => componentRef.current}
         />
       </C.ButtonAdd>
-
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <Button fn={logoutAccount} title={"Deslogar"} type={"cancel"} />
+        <span
+          onClick={handleUpdatePassowrd}
+          style={{ cursor: "pointer", fontSize: "0.9rem" }}
+        >
+          Alterar senha
+        </span>
+      </div>
       <C.ContainerPDF
         ref={componentRef}
         style={{ width: "100%", height: window.innerHeight }}
@@ -319,7 +332,10 @@ export function Home() {
             <p>CPF : {funcionario.cpf ? funcionario.cpf : " "}</p>
             <p>CTPS : {funcionario.ctps ? funcionario.ctps : " "}</p>
             <p>
-              Data Nasc : {funcionario.dataNasc ? funcionario.dataNasc : " "}
+              Data Nasc :{" "}
+              {funcionario.dataNasc
+                ? funcionario.dataNasc.split("-").reverse().join("/")
+                : " "}
             </p>
           </C.AreaItems>
           <C.AreaItems style={{ borderBottom: "1px dotted #000" }}>

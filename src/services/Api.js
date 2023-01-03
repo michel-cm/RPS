@@ -162,17 +162,20 @@ export const Api = {
     await deleteDoc(doc(database, "tiposExamesMedicos", idTipo));
   },
 
-  /*
-  updateAssistido: async (question, id) => {
-    const questionRef = doc(database, "questions", id);
-    await updateDoc(questionRef, {
-      title: question.title,
-      a: question.a,
-      b: question.b,
-      c: question.c,
-      d: question.d,
-      active: question.active,
-    });
+  updatePassword: async (email) => {
+    //redefinir Senha
+    await firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        alert("Verifique sua caixa de e-mail.");
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert("Email Inválido");
+      });
   },
-  */
 };
