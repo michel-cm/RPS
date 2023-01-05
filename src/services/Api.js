@@ -13,7 +13,7 @@ import { database, firebase } from "./firebase";
 export const Api = {
   getAllRiscosOcupacionais: async () => {
     const list = [];
-
+    console.log("API ")
     let results = await getDocs(collection(database, "riscosOcupacionais"));
     results.forEach((result) => {
       let data = result.data();
@@ -47,6 +47,7 @@ export const Api = {
       { merge: true }
     );
   },
+  
 
   deleItemForGroupRisc: async (idCategoria, newItem) => {
     const riscosOcupacionaisRef = doc(
@@ -66,7 +67,7 @@ export const Api = {
   // Exames \/
   getAllExames: async () => {
     const list = [];
-
+    console.log("API ")
     let results = await getDocs(collection(database, "exames"));
     results.forEach((result) => {
       let data = result.data();
@@ -102,7 +103,7 @@ export const Api = {
   // Funcoes
   getAllFuncoes: async () => {
     const list = [];
-
+    console.log("API ")
     let results = await getDocs(collection(database, "funcoes"));
     results.forEach((result) => {
       let data = result.data();
@@ -132,7 +133,7 @@ export const Api = {
   // Tipos Exames Medicos
   getAllTiposExamesMedicos: async () => {
     const list = [];
-
+    console.log("API ")
     let results = await getDocs(collection(database, "tiposExamesMedicos"));
     results.forEach((result) => {
       let data = result.data();

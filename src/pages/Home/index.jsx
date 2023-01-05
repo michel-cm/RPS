@@ -410,24 +410,26 @@ export function Home() {
           >
             <p style={{ fontWeight: "bold" }}>Tenho Sido Considerado : </p>
             <ul style={{ listStyle: "none", display: "flex", gap: "1rem" }}>
-              <li style={{ fontSize: "0.9rem" }}>( ) APTO</li>
-              <li style={{ fontSize: "0.9rem" }}>( ) INAPTO</li>
-              <li style={{ fontSize: "0.9rem" }}>( ) INAPTO TEMPORARIAMENTE</li>
+              <li style={{ fontSize: "0.8rem" }}>( ) APTO</li>
+              <li style={{ fontSize: "0.8rem" }}>( ) INAPTO</li>
+              <li style={{ fontSize: "0.8rem" }}>( ) INAPTO TEMPORARIAMENTE</li>
             </ul>
           </C.AreaItems>
 
-          <div style={{ display: "flex", gap: "3rem", marginTop: "4rem" }}>
-            <p style={{ fontSize: "0.9rem" }}>
+          <div style={{ display: "flex", gap: "3rem", marginTop: "3rem" }}>
+            <p style={{ fontSize: "0.8rem" }}>
               {" "}
               EXAME CLÍNICO EM: ___/___ /_____{" "}
             </p>
-            <p>OBS: ______________________________________</p>
+            <p style={{ fontSize: "0.8rem" }}>
+              OBS: ______________________________________
+            </p>
           </div>
           <footer
             style={{
               width: "100%",
               display: "flex",
-              marginTop: "4rem",
+              marginTop: "2rem",
               justifyContent: "space-between",
             }}
           >
@@ -439,7 +441,7 @@ export function Home() {
               }}
             >
               <p>_______________________________________</p>
-              <p style={{ fontSize: "0.9rem" }}>ASSINATURA DO EXAMINADOR</p>
+              <p style={{ fontSize: "0.8rem" }}>ASSINATURA DO EXAMINADOR</p>
               <p style={{ fontSize: "0.75rem" }}>
                 Declaro ter sido examinado pelo médico
               </p>
@@ -455,7 +457,7 @@ export function Home() {
               }}
             >
               <p>_______________________________________</p>
-              <p style={{ fontSize: "0.9rem" }}>ASSINATURA DO Médico</p>
+              <p style={{ fontSize: "0.8rem" }}>ASSINATURA DO MÉDICO</p>
               <p style={{ fontSize: "0.75rem" }}>Examinador</p>
             </div>
           </footer>

@@ -86,7 +86,7 @@ export const ButtonAdd = styled.div`
 export const ContainerPDF = styled.div`
   background-color: #fff;
   color: #000;
-  padding: 1rem;
+  padding: 0.25rem;
   display: none;
   @media print {
     & {

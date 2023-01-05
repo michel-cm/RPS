@@ -13,11 +13,12 @@ export function NormasContextProvider({ children }) {
   const [tiposExamesMedicos, setTiposExamesMedicos] = useState([]);
 
   //Riscos Ocupacionais Context//
-  const getAllRiscosOcupacionais = useCallback(async () => {
+  const getAllRiscosOcupacionais = async () => {
+    console.log("normas - executei 08");
     await Api.getAllRiscosOcupacionais().then((data) => {
       setRiscosOcupacionais(data);
     });
-  }, []);
+  };
 
   const addNewCategoriaRiscoOcupacional = async (nome) => {
     await Api.addNewCategoriaRiscoOcupacional(nome);
@@ -37,8 +38,8 @@ export function NormasContextProvider({ children }) {
       (item) => item.id !== idItem
     );
 
-    await Api.deleItemForGroupRisc(idGroup, itemForUp).then(async () => {
-      await getAllRiscosOcupacionais();
+    await Api.deleItemForGroupRisc(idGroup, itemForUp).then(() => {
+      getAllRiscosOcupacionais();
     });
   };
 
@@ -48,19 +49,21 @@ export function NormasContextProvider({ children }) {
   };
 
   useEffect(() => {
+    console.log("normas - executei 07");
     if (riscosOcupacionais.length === 0) {
       getAllRiscosOcupacionais();
     } else {
       return;
     }
-  }, [riscosOcupacionais]);
+  }, []);
 
   //Exames Context//
-  const getAllExames = useCallback(async () => {
+  const getAllExames = async () => {
+    console.log("normas - executei 06");
     await Api.getAllExames().then((data) => {
       setExames(data);
     });
-  }, []);
+  };
 
   const addNewExame = async (cod, nome) => {
     await Api.addNewExame(cod, nome);
@@ -75,16 +78,18 @@ export function NormasContextProvider({ children }) {
   };
 
   useEffect(() => {
+    console.log("normas - executei 05");
     if (exames.length === 0) {
       getAllExames();
     } else {
       return;
     }
-  }, [exames]);
+  }, []);
 
   //Funções
-  const getAllFuncoes = async () => {
-    await Api.getAllFuncoes().then((data) => {
+  const getAllFuncoes = () => {
+    console.log("normas - executei 04");
+    Api.getAllFuncoes().then((data) => {
       setFuncoes(data);
     });
   };
@@ -98,15 +103,17 @@ export function NormasContextProvider({ children }) {
   };
 
   useEffect(() => {
+    console.log("normas - executei 03");
     if (funcoes.length === 0) {
       getAllFuncoes();
     } else {
       return;
     }
-  }, [funcoes]);
+  }, []);
 
   // Tipos Exames Medicos
   const getAllTiposExames = async () => {
+    console.log("normas - executei 02");
     await Api.getAllTiposExamesMedicos().then((data) => {
       setTiposExamesMedicos(data);
     });
@@ -125,12 +132,13 @@ export function NormasContextProvider({ children }) {
   };
 
   useEffect(() => {
+    console.log("normas - executei 01");
     if (tiposExamesMedicos.length === 0) {
       getAllTiposExames();
     } else {
       return;
     }
-  }, [tiposExamesMedicos]);
+  }, []);
 
   return (
     <NormasContext.Provider

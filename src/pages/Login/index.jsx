@@ -22,7 +22,7 @@ export const Login = () => {
       navigate("/");
     }
   }, [user]);
-
+  console.log("Login");
   return (
     <C.Container>
       <C.AreaAccount>

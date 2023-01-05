@@ -8,11 +8,7 @@ export function DefaultLayout() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user]);
+ 
   return (
     <C.LayoutContainer>
       <Header />
